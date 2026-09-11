@@ -1,1 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>AVIRA — Wear Your Elegance</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #222;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #7c4dff;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-btn {
+      border: none;
+      background: #f3edff;
+      color: #6d3df5;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .hero {
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 70px 20px;
+      background: linear-gradient(135deg, #faf7ff, #eee5ff);
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .small-title {
+      color: #7650d8;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(50px, 10vw, 100px);
+      line-height: 0.95;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      color: #666;
+      font-size: 17px;
+      margin-bottom: 32px;
+    }
+
+    .shop-btn {
+      display: inline-block;
+      padding: 15px 32px;
+      border-radius: 30px;
+      background: #7c4dff;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 10px 30px rgba(124,77,255,.25);
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 70px 20px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .category {
+      min-height: 180px;
+      border-radius: 24px;
+      padding: 25px;
+      display: flex;
+      align-items: end;
+      background: #f3edff;
+      transition: .3s;
+      cursor: pointer;
+    }
+
+    .category:hover {
+      transform: translateY(-5px);
+    }
+
+    .category h3 {
+      font-size: 22px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      background: #fafafa;
+      border-radius: 22px;
+      overflow: hidden;
+      transition: .3s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-img {
+      height: 260px;
+      background: linear-gradient(135deg, #eee6ff, #fafafa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8a70c7;
+      font-size: 14px;
+    }
+
+    .product-info {
+      padding: 18px;
+    }
+
+    .product-info h3 {
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #7042e8;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #17131f;
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    footer h2 {
+      color: #cdb9ff;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      color: #aaa;
+    }
+
+    @media (max-width: 800px) {
+      nav {
+        display: none;
+      }
+
+      .categories,
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        min-height: 550px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .categories,
+      .products {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .category {
+        min-height: 140px;
+      }
+
+      .product-img {
+        height: 200px;
+      }
+
+      .hero h1 {
+        font-size: 58px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+
+    <div class="logo">AVIRA</div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#products">Shop</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <div class="actions">
+      <button class="action-btn" onclick="searchStore()">⌕</button>
+      <button class="action-btn" onclick="login()">♙</button>
+      <button class="action-btn" onclick="showCart()">🛍</button>
+    </div>
+
+  </div>
+</header>
+
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="small-title">AVIRA FASHION</div>
+
+    <h1>Wear Your Elegance.</h1>
+
+    <p>
+      Discover beautiful fashion pieces made to express
+      your unique style.
+    </p>
+
+    <a href="#products" class="shop-btn">
+      Shop Collection
+    </a>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="categories">
+
+  <div class="section-title">
+    <h2>Explore Categories</h2>
+  </div>
+
+  <div class="categories">
+
+    <div class="category">
+      <h3>Kids</h3>
+    </div>
+
+    <div class="category">
+      <h3>Women</h3>
+    </div>
+
+    <div class="category">
+      <h3>Men</h3>
+    </div>
+
+    <div class="category">
+      <h3>Accessories</h3>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="products">
+
+  <div class="section-title">
+    <h2>Featured Collection</h2>
+  </div>
+
+  <div class="products">
+
+    <div class="product">
+      <div class="product-img">Product Image</div>
+      <div class="product-info">
+        <h3>Lavender Dress</h3>
+        <p class="price">₹899</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-img">Product Image</div>
+      <div class="product-info">
+        <h3>Classic Outfit</h3>
+        <p class="price">₹799</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-img">Product Image</div>
+      <div class="product-info">
+        <h3>Elegant Set</h3>
+        <p class="price">₹999</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-img">Product Image</div>
+      <div class="product-info">
+        <h3>Daily Wear</h3>
+        <p class="price">₹699</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer id="about">
+
+  <h2>AVIRA</h2>
+
+  <p>Wear Your Elegance.</p>
+
+  <br>
+
+  <p>© 2026 Avira Fashion. All rights reserved.</p>
+
+</footer>
+
+
+<script>
+
+function login() {
+  alert("Avira Login — Coming next!");
+}
+
+function showCart() {
+  alert("Your cart is currently empty.");
+}
+
+function searchStore() {
+  let search = prompt("What are you looking for?");
+  
+  if (search) {
+    alert("Searching Avira for: " + search);
+  }
+}
+
+</script>
+
+</body>
+</html>

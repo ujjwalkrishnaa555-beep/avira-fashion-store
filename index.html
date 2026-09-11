@@ -3,37 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AVIRA Fashion — Wear Your Elegance.">
-<title>AVIRA — Wear Your Elegance</title>
+<title>AVIRA — Wear Your Elegance.</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
+:root{
+  --lavender:#b99cff;
+  --deep:#6f52c9;
+  --light:#f5f0ff;
+  --white:#fff;
+  --black:#17131f;
+  --gray:#77727e;
+  --border:#eee8f8;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:"DM Sans",sans-serif;
   background:#fff;
-  color:#24212b;
+  color:var(--black);
   overflow-x:hidden;
 }
 
-:root{
-  --lav:#8b6ed8;
-  --lav-dark:#6547b7;
-  --lav-light:#eee8ff;
-  --lav-soft:#f7f3ff;
-  --text:#24212b;
-  --muted:#777080;
-  --white:#fff;
-  --border:#ebe5f5;
-  --shadow:0 15px 45px rgba(83,58,130,.12);
+button{
+  font:inherit;
+  cursor:pointer;
 }
 
 a{
@@ -41,1309 +41,645 @@ a{
   color:inherit;
 }
 
-button,
-input{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-  border:0;
-}
-
-img{
-  max-width:100%;
-  display:block;
-}
-
-/* ================= HEADER ================= */
+/* HEADER */
 
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  height:74px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 6%;
   background:rgba(255,255,255,.92);
   backdrop-filter:blur(18px);
   border-bottom:1px solid var(--border);
 }
 
+.nav{
+  height:72px;
+  max-width:1250px;
+  margin:auto;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
 .logo{
-  font-size:25px;
-  font-weight:900;
-  letter-spacing:3px;
+  font-family:"Playfair Display",serif;
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:2px;
 }
 
 .logo span{
-  color:var(--lav);
+  color:var(--deep);
 }
 
-.desktop-nav{
+.nav-links{
   display:flex;
-  gap:28px;
+  gap:30px;
   font-size:14px;
-  font-weight:700;
 }
 
-.desktop-nav a{
-  position:relative;
+.nav-links a:hover{
+  color:var(--deep);
 }
 
-.desktop-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-7px;
-  width:0;
-  height:2px;
-  background:var(--lav);
-  transition:.3s;
-}
-
-.desktop-nav a:hover::after{
-  width:100%;
-}
-
-.header-actions{
+.actions{
   display:flex;
   align-items:center;
-  gap:9px;
+  gap:12px;
 }
 
 .icon-btn{
   width:42px;
   height:42px;
+  border:1px solid var(--border);
   border-radius:50%;
-  background:var(--lav-soft);
-  color:var(--lav-dark);
+  background:#fff;
   display:grid;
   place-items:center;
   font-size:18px;
-  transition:.25s;
   position:relative;
-}
-
-.icon-btn:hover{
-  transform:translateY(-2px);
-  background:var(--lav-light);
 }
 
 .cart-count{
   position:absolute;
   top:-3px;
   right:-2px;
-  min-width:18px;
-  height:18px;
-  padding:0 4px;
-  border-radius:20px;
-  background:var(--lav-dark);
+  background:var(--deep);
   color:white;
   font-size:10px;
+  width:17px;
+  height:17px;
+  border-radius:50%;
   display:grid;
   place-items:center;
 }
 
-/* ================= SEARCH ================= */
-
-.search-area{
-  max-height:0;
-  opacity:0;
-  overflow:hidden;
-  transform:translateY(-10px);
-  transition:.4s ease;
-  background:white;
-  border-bottom:1px solid transparent;
-}
-
-.search-area.active{
-  max-height:100px;
-  opacity:1;
-  transform:translateY(0);
-  border-color:var(--border);
-}
+/* SEARCH */
 
 .search-box{
-  max-width:900px;
-  margin:15px auto;
-  padding:0 20px;
+  display:none;
+  max-width:700px;
+  margin:auto;
+  padding:0 22px 15px;
+}
+
+.search-box.show{
+  display:block;
 }
 
 .search-box input{
   width:100%;
-  height:50px;
+  padding:14px 18px;
   border:1px solid var(--border);
-  border-radius:16px;
+  border-radius:14px;
   outline:none;
-  padding:0 18px;
-  background:var(--lav-soft);
-  transition:.3s;
+  background:#faf8ff;
 }
 
-.search-box input:focus{
-  border-color:var(--lav);
-  box-shadow:0 0 0 4px rgba(139,110,216,.1);
-}
-
-/* ================= 3 DOT MENU ================= */
-
-.menu-panel{
-  position:fixed;
-  right:5%;
-  top:82px;
-  width:260px;
-  padding:16px;
-  background:rgba(255,255,255,.97);
-  backdrop-filter:blur(20px);
-  border:1px solid var(--border);
-  border-radius:22px;
-  box-shadow:var(--shadow);
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  transform:translateY(-12px) scale(.94);
-  transition:.3s ease;
-  z-index:1200;
-}
-
-.menu-panel.active{
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
-  transform:translateY(0) scale(1);
-}
-
-.menu-title{
-  font-size:10px;
-  color:var(--lav);
-  font-weight:900;
-  letter-spacing:2px;
-  margin:10px 5px 7px;
-}
-
-.menu-panel a{
-  display:block;
-  padding:11px 10px;
-  border-radius:12px;
-  font-size:14px;
-  font-weight:700;
-  transition:.2s;
-}
-
-.menu-panel a:hover{
-  background:var(--lav-soft);
-  color:var(--lav-dark);
-}
-
-/* ================= HERO ================= */
+/* HERO */
 
 .hero{
-  min-height:calc(100vh - 74px);
-  padding:70px 7%;
+  min-height:650px;
+  background:linear-gradient(135deg,#faf8ff,#eee6ff);
   display:flex;
   align-items:center;
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 80% 20%,#eee6ff 0,transparent 32%),
-    linear-gradient(135deg,#fff 0%,#faf8ff 100%);
 }
 
-.hero-content{
-  max-width:650px;
-  position:relative;
-  z-index:2;
+.hero-inner{
+  width:min(1250px,92%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:50px;
+  align-items:center;
 }
 
 .eyebrow{
-  color:var(--lav-dark);
-  font-size:12px;
-  font-weight:900;
+  color:var(--deep);
+  font-size:13px;
+  font-weight:700;
   letter-spacing:3px;
   margin-bottom:18px;
 }
 
 .hero h1{
-  font-size:clamp(48px,8vw,100px);
-  line-height:.9;
-  letter-spacing:-5px;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(50px,7vw,90px);
+  line-height:.95;
   margin-bottom:25px;
 }
 
 .hero h1 span{
-  color:var(--lav);
+  color:var(--deep);
 }
 
 .hero p{
-  max-width:560px;
-  color:var(--muted);
+  color:var(--gray);
+  max-width:540px;
   line-height:1.8;
-  font-size:16px;
+  margin-bottom:30px;
 }
 
-.hero-buttons{
+.buttons{
   display:flex;
   gap:12px;
-  margin-top:30px;
   flex-wrap:wrap;
 }
 
 .btn{
-  padding:14px 22px;
-  border-radius:14px;
-  font-weight:800;
-  transition:.25s;
+  border:0;
+  padding:14px 23px;
+  border-radius:30px;
+  font-weight:600;
 }
 
 .btn-primary{
-  background:var(--text);
+  background:var(--black);
   color:white;
 }
 
-.btn-primary:hover{
-  transform:translateY(-3px);
-  background:var(--lav-dark);
-}
-
-.btn-light{
+.btn-secondary{
   background:white;
-  color:var(--lav-dark);
   border:1px solid var(--border);
 }
 
-.btn-light:hover{
-  transform:translateY(-3px);
-  box-shadow:var(--shadow);
-}
-
-.hero-badge{
-  position:absolute;
-  right:10%;
-  top:25%;
-  width:240px;
-  height:240px;
-  border-radius:50%;
-  background:linear-gradient(145deg,#f0eaff,#fff);
-  border:1px solid #ded3f7;
+.hero-visual{
+  min-height:430px;
+  border-radius:35px;
+  background:linear-gradient(145deg,#d8c9ff,#fff);
   display:grid;
   place-items:center;
-  color:var(--lav-dark);
-  font-weight:900;
-  letter-spacing:5px;
-  animation:float 4s ease-in-out infinite;
+  font-family:"Playfair Display",serif;
+  font-size:48px;
+  color:#765dc4;
+  box-shadow:0 30px 80px rgba(111,82,201,.15);
 }
 
-@keyframes float{
-  0%,100%{transform:translateY(0) rotate(0);}
-  50%{transform:translateY(-14px) rotate(4deg);}
-}
-
-/* ================= GENERAL ================= */
+/* SECTIONS */
 
 section{
-  padding:90px 7%;
-  scroll-margin-top:80px;
+  padding:80px 5%;
 }
 
 .section-head{
+  max-width:1250px;
+  margin:0 auto 35px;
   display:flex;
-  align-items:end;
   justify-content:space-between;
-  gap:20px;
-  margin-bottom:30px;
+  align-items:end;
 }
 
 .section-head h2{
+  font-family:"Playfair Display",serif;
   font-size:38px;
-  letter-spacing:-1.5px;
 }
 
 .section-head p{
-  color:var(--muted);
-  max-width:450px;
-  line-height:1.7;
+  color:var(--gray);
+  margin-top:7px;
 }
 
-.view-all{
-  color:var(--lav-dark);
-  font-weight:800;
-  white-space:nowrap;
-}
-
-/* ================= CATEGORIES ================= */
+/* CATEGORY */
 
 .categories{
-  background:#fff;
-}
-
-.category-grid{
+  max-width:1250px;
+  margin:auto;
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:16px;
+  gap:18px;
 }
 
-.category-card{
+.category{
   min-height:220px;
   border-radius:25px;
-  background:linear-gradient(145deg,#f8f4ff,#fff);
-  border:1px solid var(--border);
+  background:var(--light);
+  padding:25px;
   display:flex;
   flex-direction:column;
-  justify-content:flex-end;
-  padding:24px;
-  position:relative;
-  overflow:hidden;
-  transition:.35s;
+  justify-content:end;
+  transition:.3s;
 }
 
-.category-card::before{
-  content:"";
-  position:absolute;
-  width:150px;
-  height:150px;
-  border-radius:50%;
-  background:#eee7ff;
-  right:-30px;
-  top:-30px;
+.category:hover{
+  transform:translateY(-7px);
 }
 
-.category-card:hover{
-  transform:translateY(-8px);
-  box-shadow:var(--shadow);
+.category strong{
+  font-family:"Playfair Display",serif;
+  font-size:25px;
 }
 
-.category-number{
-  position:absolute;
-  top:20px;
-  left:20px;
-  font-size:12px;
-  font-weight:900;
-  color:var(--lav);
-}
-
-.category-card h3{
-  position:relative;
-  font-size:24px;
-}
-
-.category-card p{
-  position:relative;
-  color:var(--muted);
-  margin-top:6px;
-}
-
-/* ================= PRODUCTS ================= */
+/* PRODUCTS */
 
 .products{
-  background:var(--lav-soft);
-}
-
-.product-grid{
+  max-width:1250px;
+  margin:auto;
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.product{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:22px;
-  overflow:hidden;
-  transition:.3s;
-  position:relative;
-}
-
-.product:hover{
-  transform:translateY(-7px);
-  box-shadow:var(--shadow);
-}
-
-.product-image{
-  height:260px;
-  background:
-    linear-gradient(135deg,#eee7ff,#faf8ff);
-  display:grid;
-  place-items:center;
-  color:#a89bc2;
-  font-size:11px;
-  letter-spacing:2px;
-  font-weight:900;
-}
-
-.wishlist-btn{
-  position:absolute;
-  top:13px;
-  right:13px;
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  background:white;
-  box-shadow:0 8px 20px rgba(0,0,0,.08);
-  color:#777;
-  transition:.2s;
-  z-index:2;
-}
-
-.wishlist-btn.active{
-  color:#8b6ed8;
-  background:#f1ebff;
-}
-
-.product-info{
-  padding:17px;
-}
-
-.product-category{
-  color:var(--lav);
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-}
-
-.product h3{
-  font-size:16px;
-  margin:7px 0;
-}
-
-.product-bottom{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
-}
-
-.price{
-  font-size:17px;
-  font-weight:900;
-}
-
-.add-btn{
-  padding:9px 12px;
-  border-radius:10px;
-  background:var(--text);
-  color:white;
-  font-size:12px;
-  font-weight:800;
-}
-
-.add-btn:hover{
-  background:var(--lav-dark);
-}
-
-/* ================= OFFER ================= */
-
-.offer{
-  padding:70px 7%;
-}
-
-.offer-box{
-  border-radius:30px;
-  padding:50px;
-  background:linear-gradient(120deg,#17131e,#6e52b9);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:30px;
-  overflow:hidden;
-  position:relative;
-}
-
-.offer-box::after{
-  content:"AVIRA";
-  position:absolute;
-  right:-30px;
-  bottom:-60px;
-  font-size:150px;
-  font-weight:900;
-  color:rgba(255,255,255,.06);
-}
-
-.offer-box h2{
-  font-size:42px;
-  margin-bottom:10px;
-}
-
-.offer-box p{
-  color:#ddd4ef;
-  line-height:1.7;
-}
-
-/* ================= WHY ================= */
-
-.why{
-  background:#fff;
-}
-
-.why-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.why-card{
-  padding:28px;
-  border:1px solid var(--border);
-  border-radius:22px;
-  transition:.3s;
-}
-
-.why-card:hover{
-  transform:translateY(-5px);
-  box-shadow:var(--shadow);
-}
-
-.why-icon{
-  width:48px;
-  height:48px;
-  border-radius:15px;
-  display:grid;
-  place-items:center;
-  background:var(--lav-light);
-  color:var(--lav-dark);
-  font-size:22px;
-  margin-bottom:18px;
-}
-
-.why-card h3{
-  margin-bottom:8px;
-}
-
-.why-card p{
-  color:var(--muted);
-  line-height:1.7;
-  font-size:14px;
-}
-
-/* ================= WISHLIST / ORDERS / ACCOUNT ================= */
-
-.app-section{
-  background:var(--lav-soft);
-}
-
-.empty-box{
-  min-height:180px;
-  border:1px dashed #d8ccef;
-  border-radius:24px;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  padding:30px;
-  background:white;
-}
-
-.empty-box strong{
-  display:block;
-  font-size:20px;
-  margin-bottom:7px;
-}
-
-.empty-box p{
-  color:var(--muted);
-}
-
-.wishlist-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.account-box{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:25px;
-  padding:30px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
   gap:20px;
 }
 
-.account-info h3{
-  margin-bottom:8px;
-}
-
-.account-info p{
-  color:var(--muted);
-}
-
-/* ================= REVIEWS ================= */
-
-.reviews{
-  background:white;
-}
-
-.review-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.review{
-  padding:25px;
+.product{
   border:1px solid var(--border);
   border-radius:22px;
-}
-
-.stars{
-  color:#9a7be5;
-  letter-spacing:3px;
-  margin-bottom:15px;
-}
-
-.review p{
-  color:var(--muted);
-  line-height:1.7;
-}
-
-.review strong{
-  display:block;
-  margin-top:18px;
-}
-
-/* ================= NEWSLETTER ================= */
-
-.newsletter{
-  padding:80px 7%;
-  background:var(--lav-light);
-}
-
-.newsletter-box{
-  max-width:750px;
-  margin:auto;
-  text-align:center;
-}
-
-.newsletter-box h2{
-  font-size:38px;
-  margin-bottom:12px;
-}
-
-.newsletter-box p{
-  color:var(--muted);
-  line-height:1.7;
-}
-
-.newsletter-form{
-  display:flex;
-  max-width:550px;
-  margin:25px auto 0;
+  overflow:hidden;
   background:white;
-  padding:6px;
-  border-radius:15px;
-  border:1px solid #ddd2f3;
+  transition:.3s;
 }
 
-.newsletter-form input{
+.product:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 45px rgba(0,0,0,.07);
+}
+
+.product-image{
+  height:270px;
+  background:linear-gradient(145deg,#f0eaff,#faf8ff);
+  display:grid;
+  place-items:center;
+  color:#a28adf;
+  font-size:15px;
+}
+
+.product-info{
+  padding:18px;
+}
+
+.product-info h3{
+  font-size:16px;
+  margin-bottom:7px;
+}
+
+.price{
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+.product-actions{
+  display:flex;
+  gap:8px;
+}
+
+.product-actions button{
   flex:1;
-  border:0;
-  outline:0;
-  padding:0 14px;
-  min-width:0;
+  border:1px solid var(--border);
+  background:white;
+  padding:10px;
+  border-radius:12px;
 }
 
-.newsletter-form button{
-  padding:12px 18px;
-  border-radius:11px;
-  background:var(--text);
+.product-actions .add{
+  background:var(--black);
   color:white;
-  font-weight:800;
 }
 
-/* ================= ABOUT ================= */
+/* PROMO */
 
-.about{
+.promo{
+  background:var(--black);
+  color:white;
+  border-radius:35px;
+  max-width:1250px;
+  margin:auto;
+  padding:55px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+}
+
+.promo h2{
+  font-family:"Playfair Display",serif;
+  font-size:42px;
+}
+
+.promo p{
+  color:#c9c3d0;
+  margin-top:10px;
+}
+
+/* WHY */
+
+.why{
+  max-width:1250px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.why-card{
+  padding:30px;
+  border:1px solid var(--border);
+  border-radius:22px;
   background:#fff;
 }
 
-.about-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
-}
-
-.about-text h2{
-  font-size:44px;
-  margin-bottom:18px;
-}
-
-.about-text p{
-  color:var(--muted);
-  line-height:1.9;
-  margin-bottom:15px;
-}
-
-.about-card{
-  min-height:330px;
-  border-radius:30px;
-  background:linear-gradient(145deg,#f1eaff,#fff);
-  display:grid;
-  place-items:center;
+.why-card span{
   font-size:30px;
-  font-weight:900;
-  letter-spacing:7px;
-  color:var(--lav-dark);
-  border:1px solid var(--border);
 }
 
-/* ================= CONTACT ================= */
-
-.contact{
-  background:var(--lav-soft);
+.why-card h3{
+  margin:15px 0 8px;
 }
 
-.contact-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
+.why-card p{
+  color:var(--gray);
+  line-height:1.6;
 }
 
-.contact-card{
-  background:white;
-  padding:25px;
-  border-radius:20px;
-  border:1px solid var(--border);
+/* PAGE */
+
+.page{
+  display:none;
+  min-height:70vh;
 }
 
-.contact-card small{
+.page.active{
   display:block;
-  color:var(--lav);
-  font-weight:900;
-  letter-spacing:1px;
-  margin-bottom:8px;
 }
 
-.contact-card p{
-  color:var(--muted);
+.page-title{
+  max-width:1250px;
+  margin:auto;
+  padding:70px 5% 25px;
 }
 
-/* ================= FOOTER ================= */
-
-footer{
-  padding:45px 7% 100px;
-  background:#17131e;
-  color:white;
+.page-title h1{
+  font-family:"Playfair Display",serif;
+  font-size:50px;
 }
 
-.footer-top{
-  display:flex;
-  justify-content:space-between;
-  gap:30px;
-  flex-wrap:wrap;
-}
-
-.footer-logo{
-  font-size:25px;
-  font-weight:900;
-  letter-spacing:3px;
-}
-
-.footer-logo span{
-  color:#bda7ff;
-}
-
-.footer-text{
-  color:#aaa2b4;
-  max-width:380px;
-  margin-top:12px;
-  line-height:1.7;
-}
-
-.footer-links{
-  display:flex;
-  gap:25px;
-  flex-wrap:wrap;
-}
-
-.footer-links a{
-  color:#d5cedd;
-  font-size:14px;
-}
-
-.footer-bottom{
-  border-top:1px solid #312b39;
-  margin-top:35px;
-  padding-top:20px;
-  color:#8e8796;
-  font-size:12px;
-}
-
-/* ================= MODAL ================= */
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(20,15,28,.45);
-  backdrop-filter:blur(8px);
-  display:grid;
-  place-items:center;
-  padding:20px;
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  transition:.3s;
-  z-index:2000;
-}
-
-.modal.active{
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
-}
-
-.modal-box{
-  width:min(420px,100%);
-  background:white;
-  border-radius:28px;
-  padding:30px;
-  position:relative;
-  transform:translateY(20px) scale(.96);
-  transition:.3s;
-}
-
-.modal.active .modal-box{
-  transform:translateY(0) scale(1);
-}
-
-.close-modal{
-  position:absolute;
-  right:17px;
-  top:15px;
-  width:35px;
-  height:35px;
-  border-radius:50%;
-  background:var(--lav-soft);
-}
-
-.modal-box h2{
-  margin-bottom:8px;
-}
-
-.modal-box>p{
-  color:var(--muted);
-  margin-bottom:22px;
-}
-
-.login-input{
-  width:100%;
-  height:48px;
-  border:1px solid var(--border);
-  border-radius:13px;
-  padding:0 14px;
-  outline:0;
-  margin-bottom:12px;
-}
-
-.login-input:focus{
-  border-color:var(--lav);
-}
-
-.login-btn{
-  width:100%;
-  height:48px;
-  border-radius:13px;
-  background:var(--text);
-  color:white;
-  font-weight:800;
-}
-
-.google-btn{
-  width:100%;
-  height:48px;
-  border-radius:13px;
-  background:white;
-  border:1px solid var(--border);
-  margin-top:10px;
-  font-weight:800;
-}
-
-.login-note{
-  margin-top:15px;
+.empty{
   text-align:center;
-  color:var(--muted);
-  font-size:12px;
+  padding:100px 20px;
+  color:var(--gray);
 }
 
-/* ================= CART DRAWER ================= */
+/* CART */
 
-.cart-drawer{
-  position:fixed;
-  top:0;
-  right:-430px;
-  width:min(430px,100%);
-  height:100vh;
-  background:white;
-  z-index:1900;
-  box-shadow:-20px 0 50px rgba(0,0,0,.15);
-  transition:.4s;
-  padding:25px;
-  display:flex;
-  flex-direction:column;
-}
-
-.cart-drawer.active{
-  right:0;
-}
-
-.cart-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
-}
-
-.cart-items{
-  flex:1;
-  overflow:auto;
+.cart-list{
+  max-width:900px;
+  margin:auto;
+  padding:30px 5%;
 }
 
 .cart-item{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  padding:14px 0;
-  border-bottom:1px solid var(--border);
+  gap:18px;
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  margin-bottom:12px;
 }
 
-.cart-item small{
-  color:var(--muted);
-}
-
-.remove-cart{
-  background:var(--lav-soft);
-  color:var(--lav-dark);
-  padding:7px 9px;
-  border-radius:9px;
+.cart-thumb{
+  width:75px;
+  height:75px;
+  border-radius:14px;
+  background:var(--light);
+  display:grid;
+  place-items:center;
 }
 
 .cart-total{
-  border-top:1px solid var(--border);
-  padding-top:18px;
-  margin-top:15px;
-}
-
-.cart-total-row{
+  max-width:900px;
+  margin:20px auto 80px;
+  padding:0 5%;
   display:flex;
   justify-content:space-between;
-  font-weight:900;
+  font-size:20px;
+  font-weight:700;
+}
+
+/* ACCOUNT */
+
+.account-card{
+  max-width:550px;
+  margin:30px auto 100px;
+  padding:35px;
+  border:1px solid var(--border);
+  border-radius:25px;
+  text-align:center;
+}
+
+.avatar{
+  width:80px;
+  height:80px;
+  margin:auto;
+  border-radius:50%;
+  background:var(--light);
+  display:grid;
+  place-items:center;
+  font-size:35px;
+}
+
+/* FOOTER */
+
+footer{
+  background:#17131f;
+  color:white;
+  padding:60px 5% 100px;
+}
+
+.footer-inner{
+  max-width:1250px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:40px;
+}
+
+footer p{
+  color:#aaa4b1;
+  line-height:1.7;
+  margin-top:12px;
+}
+
+footer h3{
   margin-bottom:15px;
 }
 
-.checkout{
-  width:100%;
-  height:48px;
-  background:var(--text);
-  color:white;
-  border-radius:13px;
-  font-weight:800;
-}
+/* MENU */
 
-/* ================= REVEAL ================= */
-
-.reveal{
-  opacity:0;
-  transform:translateY(25px);
-  transition:.7s ease;
-}
-
-.reveal.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* ================= MOBILE BOTTOM NAV ================= */
-
-.bottom-nav{
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  z-index:1999;
   display:none;
 }
 
-@media(max-width:600px){
+.overlay.show{
+  display:block;
+}
 
-  body{
-    padding-bottom:92px;
-  }
+.menu{
+  position:fixed;
+  right:-390px;
+  top:0;
+  width:min(390px,90%);
+  height:100vh;
+  background:white;
+  z-index:2000;
+  padding:25px;
+  transition:.35s;
+  overflow:auto;
+}
 
-  .bottom-nav{
-    position:fixed;
-    display:flex;
-    left:12px;
-    right:12px;
-    bottom:12px;
-    height:66px;
-    z-index:1800;
-    background:rgba(255,255,255,.94);
-    backdrop-filter:blur(20px);
-    border:1px solid #e9e3f4;
-    border-radius:22px;
-    box-shadow:0 15px 45px rgba(70,50,100,.18);
-    align-items:center;
-    justify-content:space-around;
-  }
+.menu.show{
+  right:0;
+}
 
-  .bottom-item{
-    flex:1;
-    height:100%;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:4px;
-    color:#8b8494;
-    transition:.25s;
-    position:relative;
-  }
+.menu-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+}
 
-  .bottom-item span{
-    font-size:21px;
-    line-height:1;
-  }
+.menu h2{
+  font-family:"Playfair Display",serif;
+}
 
-  .bottom-item small{
-    font-size:10px;
-    font-weight:800;
-  }
+.menu-section{
+  margin-bottom:25px;
+}
 
-  .bottom-item.active{
-    color:#6d4dcc;
-  }
+.menu-section h4{
+  color:#999;
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:10px;
+}
 
-  .bottom-item.active::before{
-    content:"";
-    position:absolute;
-    top:5px;
-    width:28px;
-    height:3px;
-    border-radius:10px;
-    background:#b79cff;
-  }
+.menu-section a{
+  display:block;
+  padding:12px 0;
+  border-bottom:1px solid #f1edf6;
+}
 
-  .bottom-item:active{
-    transform:scale(.9);
-  }
+.menu-section a:hover{
+  color:var(--deep);
+}
 
-  header{
-    height:65px;
-    padding:0 17px;
-  }
+/* MOBILE NAV */
 
-  .logo{
-    font-size:21px;
-  }
+.mobile-nav{
+  display:none;
+}
 
-  .desktop-nav{
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+  .nav-links{
     display:none;
   }
 
-  .header-actions{
-    gap:5px;
+  .hero-inner{
+    grid-template-columns:1fr;
+    padding:70px 0;
   }
 
-  .icon-btn{
-    width:37px;
-    height:37px;
-    font-size:16px;
+  .hero-visual{
+    min-height:300px;
   }
 
-  .hero{
-    min-height:calc(100vh - 65px);
-    padding:55px 20px;
+  .categories{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .hero h1{
-    font-size:58px;
-    letter-spacing:-3px;
+  .products{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .hero p{
-    font-size:14px;
+  .why{
+    grid-template-columns:1fr;
   }
 
-  .hero-badge{
-    width:130px;
-    height:130px;
-    right:-35px;
-    top:17%;
+  .footer-inner{
+    grid-template-columns:1fr;
+  }
+
+  .mobile-nav{
+    display:flex;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:68px;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(15px);
+    border-top:1px solid var(--border);
+    z-index:1500;
+    justify-content:space-around;
+    align-items:center;
+  }
+
+  .mobile-nav button{
+    border:0;
+    background:none;
+    color:#777;
     font-size:11px;
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    align-items:center;
+  }
+
+  .mobile-nav button.active{
+    color:var(--deep);
+    font-weight:700;
+  }
+
+  body{
+    padding-bottom:68px;
   }
 
   section{
-    padding:65px 20px;
+    padding:60px 5%;
   }
 
-  .section-head{
-    display:block;
+  .promo{
+    padding:35px 25px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
+@media(max-width:500px){
+
+  .categories{
+    grid-template-columns:1fr 1fr;
   }
 
-  .section-head h2{
-    font-size:30px;
-    margin-bottom:8px;
-  }
-
-  .section-head p{
-    font-size:13px;
-  }
-
-  .view-all{
-    display:inline-block;
-    margin-top:12px;
-  }
-
-  .category-grid,
-  .product-grid,
-  .wishlist-grid{
-    grid-template-columns:repeat(2,1fr);
+  .products{
+    grid-template-columns:1fr 1fr;
     gap:12px;
-  }
-
-  .category-card{
-    min-height:170px;
-    padding:17px;
-    border-radius:19px;
-  }
-
-  .category-card h3{
-    font-size:19px;
-  }
-
-  .product{
-    border-radius:18px;
   }
 
   .product-image{
     height:190px;
   }
 
+  .hero h1{
+    font-size:52px;
+  }
+
+  .section-head h2{
+    font-size:30px;
+  }
+
   .product-info{
     padding:13px;
   }
 
-  .product h3{
-    font-size:14px;
-  }
-
-  .price{
-    font-size:14px;
-  }
-
-  .add-btn{
-    font-size:10px;
-    padding:8px 9px;
-  }
-
-  .offer{
-    padding:55px 20px;
-  }
-
-  .offer-box{
-    padding:30px 23px;
-    display:block;
-    border-radius:24px;
-  }
-
-  .offer-box h2{
-    font-size:30px;
-  }
-
-  .offer-box .btn{
-    margin-top:20px;
-  }
-
-  .why-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .why-card{
-    padding:18px;
-  }
-
-  .why-card h3{
-    font-size:15px;
-  }
-
-  .why-card p{
-    font-size:12px;
-  }
-
-  .review-grid{
-    grid-template-columns:1fr;
-  }
-
-  .about-grid{
-    grid-template-columns:1fr;
-  }
-
-  .about-text h2{
-    font-size:35px;
-  }
-
-  .about-card{
-    min-height:220px;
-  }
-
-  .contact-grid{
-    grid-template-columns:1fr;
-  }
-
-  .account-box{
-    display:block;
-  }
-
-  .account-box .btn{
-    margin-top:20px;
-  }
-
-  .newsletter{
-    padding:60px 20px;
-  }
-
-  .newsletter-box h2{
-    font-size:30px;
-  }
-
-  .newsletter-form{
-    height:auto;
-  }
-
-  .newsletter-form input{
-    width:100%;
-  }
-
-  .newsletter-form button{
-    padding:11px;
-  }
-
-  footer{
-    padding-bottom:110px;
-  }
-
-  .menu-panel{
-    right:15px;
-    top:72px;
-    width:calc(100% - 30px);
-  }
-}
-
-/* ================= TABLET ================= */
-
-@media(min-width:601px) and (max-width:950px){
-
-  .category-grid,
-  .product-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .why-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .hero-badge{
-    opacity:.45;
+  .product-actions button{
+    padding:8px 4px;
+    font-size:11px;
   }
 }
 </style>
@@ -1351,1127 +687,758 @@ footer{
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- HEADER -->
 
 <header>
+  <div class="nav">
 
-  <a href="#home" class="logo">
-    AVI<span>RA</span>
-  </a>
+    <a href="#home" class="logo" onclick="go('home')">
+      AVI<span>RA</span>
+    </a>
 
-  <nav class="desktop-nav">
-    <a href="#home">Home</a>
-    <a href="#categories">Categories</a>
-    <a href="#shop">Shop</a>
-    <a href="#about">About</a>
-  </nav>
+    <nav class="nav-links">
+      <a href="#home" onclick="go('home')">Home</a>
+      <a href="#categories" onclick="go('home')">Categories</a>
+      <a href="#new" onclick="go('home')">New Arrivals</a>
+      <a href="#about" onclick="go('home')">About</a>
+    </nav>
 
-  <div class="header-actions">
+    <div class="actions">
 
-    <button class="icon-btn" onclick="toggleSearch()" aria-label="Search">
-      ⌕
-    </button>
+      <button class="icon-btn" onclick="toggleSearch()">⌕</button>
 
-    <button class="icon-btn" onclick="openLogin()" aria-label="Login">
-      ♙
-    </button>
+      <button class="icon-btn" onclick="go('cart')">
+        🛍
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
 
-    <button class="icon-btn" onclick="openCart()" aria-label="Cart">
-      🛍
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
+      <button class="icon-btn" onclick="openMenu()">⋮</button>
 
-    <button class="icon-btn" onclick="toggleMenu()" aria-label="Menu">
-      ⋮
-    </button>
-
+    </div>
   </div>
 
-</header>
-
-<!-- ================= SEARCH ================= -->
-
-<div class="search-area" id="searchArea">
-  <div class="search-box">
+  <div class="search-box" id="searchBox">
     <input
-      id="searchInput"
       type="search"
+      id="searchInput"
       placeholder="Search fashion..."
       oninput="searchProducts()"
     >
   </div>
-</div>
+</header>
 
-<!-- ================= 3 DOT MENU ================= -->
 
-<div class="menu-panel" id="menuPanel">
+<!-- MENU -->
 
-  <div class="menu-title">SHOP</div>
-  <a href="#shop" onclick="closeMenu()">New Arrivals</a>
-  <a href="#trending" onclick="closeMenu()">Trending</a>
-  <a href="#bestsellers" onclick="closeMenu()">Best Sellers</a>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-  <div class="menu-title">CATEGORIES</div>
-  <a href="#categories" onclick="closeMenu()">Kids</a>
-  <a href="#categories" onclick="closeMenu()">Women</a>
-  <a href="#categories" onclick="closeMenu()">Men</a>
-  <a href="#categories" onclick="closeMenu()">Accessories</a>
+<aside class="menu" id="menu">
 
-  <div class="menu-title">ACCOUNT</div>
-  <a href="#wishlist" onclick="closeMenu()">Wishlist</a>
-  <a href="#orders" onclick="closeMenu()">Orders</a>
-  <a href="#account" onclick="closeMenu()">Account</a>
+  <div class="menu-head">
+    <h2>AVIRA</h2>
+    <button class="icon-btn" onclick="closeMenu()">×</button>
+  </div>
 
-  <div class="menu-title">MORE</div>
-  <a href="#about" onclick="closeMenu()">About AVIRA</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <div class="menu-section">
+    <h4>SHOP</h4>
+    <a href="#home" onclick="go('home');closeMenu()">All Products</a>
+    <a href="#new" onclick="go('home');closeMenu()">New Arrivals</a>
+    <a href="#trending" onclick="go('home');closeMenu()">Trending</a>
+    <a href="#best" onclick="go('home');closeMenu()">Best Sellers</a>
+  </div>
 
-</div>
+  <div class="menu-section">
+    <h4>CATEGORIES</h4>
+    <a href="#categories" onclick="go('home');closeMenu()">Kids</a>
+    <a href="#categories" onclick="go('home');closeMenu()">Women</a>
+    <a href="#categories" onclick="go('home');closeMenu()">Men</a>
+    <a href="#categories" onclick="go('home');closeMenu()">Accessories</a>
+  </div>
 
-<!-- ================= HOME ================= -->
+  <div class="menu-section">
+    <h4>YOUR AVIRA</h4>
+    <a href="#wishlist" onclick="go('wishlist');closeMenu()">♡ Wishlist</a>
+    <a href="#orders" onclick="go('orders');closeMenu()">📦 Orders</a>
+    <a href="#account" onclick="go('account');closeMenu()">👤 Account</a>
+    <a href="#cart" onclick="go('cart');closeMenu()">🛍 Cart</a>
+  </div>
 
-<section class="hero" id="home">
+  <div class="menu-section">
+    <h4>MORE</h4>
+    <a href="#about" onclick="go('home');closeMenu()">About AVIRA</a>
+    <a href="#contact" onclick="go('home');closeMenu()">Contact Us</a>
+    <a href="#newsletter" onclick="go('home');closeMenu()">Newsletter</a>
+  </div>
 
-  <div class="hero-content reveal">
+</aside>
 
-    <div class="eyebrow">
-      AVIRA FASHION
+
+<!-- HOME PAGE -->
+
+<main id="home" class="page active">
+
+  <section class="hero">
+
+    <div class="hero-inner">
+
+      <div>
+
+        <div class="eyebrow">AVIRA FASHION</div>
+
+        <h1>
+          Wear Your<br>
+          <span>Elegance.</span>
+        </h1>
+
+        <p>
+          Discover modern fashion made for every moment.
+          Curated styles for Kids, Women, Men and Accessories.
+        </p>
+
+        <div class="buttons">
+          <button class="btn btn-primary"
+                  onclick="document.getElementById('new').scrollIntoView({behavior:'smooth'})">
+            Shop Collection
+          </button>
+
+          <button class="btn btn-secondary"
+                  onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">
+            Explore Categories
+          </button>
+        </div>
+
+      </div>
+
+      <div class="hero-visual">
+        AVIRA
+      </div>
+
     </div>
 
-    <h1>
-      Wear Your<br>
-      <span>Elegance.</span>
-    </h1>
+  </section>
 
-    <p>
-      Discover a refined collection of fashion made for
-      everyday confidence, effortless style and modern elegance.
+
+  <!-- CATEGORIES -->
+
+  <section id="categories">
+
+    <div class="section-head">
+      <div>
+        <h2>Shop by Category</h2>
+        <p>Find your style.</p>
+      </div>
+    </div>
+
+    <div class="categories">
+
+      <div class="category">
+        <span>01</span>
+        <strong>Kids</strong>
+      </div>
+
+      <div class="category">
+        <span>02</span>
+        <strong>Women</strong>
+      </div>
+
+      <div class="category">
+        <span>03</span>
+        <strong>Men</strong>
+      </div>
+
+      <div class="category">
+        <span>04</span>
+        <strong>Accessories</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEW -->
+
+  <section id="new">
+
+    <div class="section-head">
+      <div>
+        <h2>New Arrivals</h2>
+        <p>Fresh styles, just for you.</p>
+      </div>
+    </div>
+
+    <div class="products">
+
+      <article class="product" data-name="lavender co ord set">
+
+        <div class="product-image">IMAGE</div>
+
+        <div class="product-info">
+          <h3>Lavender Co-ord Set</h3>
+          <div class="price">₹1,099</div>
+
+          <div class="product-actions">
+            <button onclick="addWishlist('Lavender Co-ord Set',1099)">♡</button>
+            <button class="add"
+                    onclick="addCart('Lavender Co-ord Set',1099)">
+              Add
+            </button>
+          </div>
+        </div>
+
+      </article>
+
+
+      <article class="product" data-name="classic kids set">
+
+        <div class="product-image">IMAGE</div>
+
+        <div class="product-info">
+          <h3>Classic Kids Set</h3>
+          <div class="price">₹799</div>
+
+          <div class="product-actions">
+            <button onclick="addWishlist('Classic Kids Set',799)">♡</button>
+            <button class="add"
+                    onclick="addCart('Classic Kids Set',799)">
+              Add
+            </button>
+          </div>
+        </div>
+
+      </article>
+
+
+      <article class="product" data-name="premium oversized shirt">
+
+        <div class="product-image">IMAGE</div>
+
+        <div class="product-info">
+          <h3>Premium Oversized Shirt</h3>
+          <div class="price">₹899</div>
+
+          <div class="product-actions">
+            <button onclick="addWishlist('Premium Oversized Shirt',899)">♡</button>
+            <button class="add"
+                    onclick="addCart('Premium Oversized Shirt',899)">
+              Add
+            </button>
+          </div>
+        </div>
+
+      </article>
+
+
+      <article class="product" data-name="minimal handbag">
+
+        <div class="product-image">IMAGE</div>
+
+        <div class="product-info">
+          <h3>Minimal Handbag</h3>
+          <div class="price">₹1,299</div>
+
+          <div class="product-actions">
+            <button onclick="addWishlist('Minimal Handbag',1299)">♡</button>
+            <button class="add"
+                    onclick="addCart('Minimal Handbag',1299)">
+              Add
+            </button>
+          </div>
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROMO -->
+
+  <section>
+
+    <div class="promo">
+
+      <div>
+        <h2>Made for every generation.</h2>
+        <p>From little ones to everyday essentials.</p>
+      </div>
+
+      <button class="btn btn-secondary"
+              onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">
+        Explore
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- TRENDING -->
+
+  <section id="trending">
+
+    <div class="section-head">
+      <div>
+        <h2>Trending Now</h2>
+        <p>Styles everyone's talking about.</p>
+      </div>
+    </div>
+
+    <div class="products">
+
+      <article class="product" data-name="lavender casual dress">
+        <div class="product-image">IMAGE</div>
+        <div class="product-info">
+          <h3>Lavender Casual Dress</h3>
+          <div class="price">₹1,199</div>
+          <div class="product-actions">
+            <button onclick="addWishlist('Lavender Casual Dress',1199)">♡</button>
+            <button class="add"
+                    onclick="addCart('Lavender Casual Dress',1199)">
+              Add
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-name="everyday cotton shirt">
+        <div class="product-image">IMAGE</div>
+        <div class="product-info">
+          <h3>Everyday Cotton Shirt</h3>
+          <div class="price">₹699</div>
+          <div class="product-actions">
+            <button onclick="addWishlist('Everyday Cotton Shirt',699)">♡</button>
+            <button class="add"
+                    onclick="addCart('Everyday Cotton Shirt',699)">
+              Add
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-name="premium kids dress">
+        <div class="product-image">IMAGE</div>
+        <div class="product-info">
+          <h3>Premium Kids Dress</h3>
+          <div class="price">₹999</div>
+          <div class="product-actions">
+            <button onclick="addWishlist('Premium Kids Dress',999)">♡</button>
+            <button class="add"
+                    onclick="addCart('Premium Kids Dress',999)">
+              Add
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-name="classic fashion bag">
+        <div class="product-image">IMAGE</div>
+        <div class="product-info">
+          <h3>Classic Fashion Bag</h3>
+          <div class="price">₹1,399</div>
+          <div class="product-actions">
+            <button onclick="addWishlist('Classic Fashion Bag',1399)">♡</button>
+            <button class="add"
+                    onclick="addCart('Classic Fashion Bag',1399)">
+              Add
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHY -->
+
+  <section>
+
+    <div class="section-head">
+      <div>
+        <h2>Why AVIRA?</h2>
+        <p>Fashion, made simple.</p>
+      </div>
+    </div>
+
+    <div class="why">
+
+      <div class="why-card">
+        <span>✦</span>
+        <h3>Curated Style</h3>
+        <p>Modern pieces selected for your everyday wardrobe.</p>
+      </div>
+
+      <div class="why-card">
+        <span>♡</span>
+        <h3>Made With Care</h3>
+        <p>Every collection is designed with comfort and style in mind.</p>
+      </div>
+
+      <div class="why-card">
+        <span>✓</span>
+        <h3>Easy Shopping</h3>
+        <p>Simple browsing, wishlist and cart experience.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="section-head">
+      <div>
+        <h2>About AVIRA</h2>
+        <p>Wear your elegance.</p>
+      </div>
+    </div>
+
+    <div style="max-width:800px;margin:auto;color:#777;line-height:1.9;">
+      AVIRA is a modern fashion destination created around
+      timeless style, comfort and individuality. From kidswear
+      to everyday fashion and accessories, AVIRA brings everything
+      together in one elegant shopping experience.
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="section-head">
+      <div>
+        <h2>Contact Us</h2>
+        <p>We're here to help.</p>
+      </div>
+    </div>
+
+    <div class="account-card">
+
+      <h3>AVIRA Support</h3>
+
+      <p style="color:#777;margin:15px 0;">
+        Email: support@avira.store
+      </p>
+
+      <button class="btn btn-primary"
+              onclick="alert('Contact feature ready to connect.')">
+        Contact AVIRA
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEWSLETTER -->
+
+  <section id="newsletter">
+
+    <div class="promo">
+
+      <div>
+        <h2>Stay in the AVIRA world.</h2>
+        <p>Get updates about new collections and offers.</p>
+      </div>
+
+      <button class="btn btn-secondary"
+              onclick="subscribe()">
+        Subscribe
+      </button>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- WISHLIST -->
+
+<main id="wishlist" class="page">
+
+  <div class="page-title">
+    <h1>Wishlist</h1>
+    <p>Your saved favourites.</p>
+  </div>
+
+  <div class="products" id="wishlistProducts"></div>
+
+</main>
+
+
+<!-- ORDERS -->
+
+<main id="orders" class="page">
+
+  <div class="page-title">
+    <h1>Your Orders</h1>
+    <p>Track your AVIRA purchases.</p>
+  </div>
+
+  <div id="ordersList" class="empty">
+    No orders yet.
+  </div>
+
+</main>
+
+
+<!-- ACCOUNT -->
+
+<main id="account" class="page">
+
+  <div class="page-title">
+    <h1>Account</h1>
+    <p>Your AVIRA profile.</p>
+  </div>
+
+  <div class="account-card">
+
+    <div class="avatar">👤</div>
+
+    <h2 style="margin:18px 0 8px;" id="accountName">
+      Welcome to AVIRA
+    </h2>
+
+    <p id="accountStatus" style="color:#777;">
+      Login to manage your account.
     </p>
 
-    <div class="hero-buttons">
-      <a href="#shop" class="btn btn-primary">
-        Shop Collection
-      </a>
-
-      <a href="#categories" class="btn btn-light">
-        Explore Categories
-      </a>
-    </div>
-
-  </div>
-
-  <div class="hero-badge">
-    AVIRA
-  </div>
-
-</section>
-
-<!-- ================= CATEGORIES ================= -->
-
-<section class="categories" id="categories">
-
-  <div class="section-head reveal">
-    <div>
-      <h2>Shop by Category</h2>
-      <p>
-        Find your style across our carefully selected collections.
-      </p>
-    </div>
-  </div>
-
-  <div class="category-grid">
-
-    <a class="category-card reveal" href="#shop">
-      <span class="category-number">01</span>
-      <h3>Kids</h3>
-      <p>Playful & stylish</p>
-    </a>
-
-    <a class="category-card reveal" href="#shop">
-      <span class="category-number">02</span>
-      <h3>Women</h3>
-      <p>Modern elegance</p>
-    </a>
-
-    <a class="category-card reveal" href="#shop">
-      <span class="category-number">03</span>
-      <h3>Men</h3>
-      <p>Classic confidence</p>
-    </a>
-
-    <a class="category-card reveal" href="#shop">
-      <span class="category-number">04</span>
-      <h3>Accessories</h3>
-      <p>Complete your look</p>
-    </a>
-
-  </div>
-
-</section>
-
-<!-- ================= NEW ARRIVALS ================= -->
-
-<section class="products" id="shop">
-
-  <div class="section-head reveal">
-
-    <div>
-      <h2>New Arrivals</h2>
-      <p>
-        Fresh styles selected for the latest AVIRA collection.
-      </p>
-    </div>
-
-    <a class="view-all" href="#shop">
-      View All →
-    </a>
-
-  </div>
-
-  <div class="product-grid" id="productGrid">
-
-    <article class="product reveal" data-name="lavender co-ord women">
-      <button
-        class="wishlist-btn"
-        onclick="toggleWishlist(this,'Lavender Co-ord',1099)"
-      >♡</button>
-
-      <div class="product-image">
-        IMAGE
-      </div>
-
-      <div class="product-info">
-        <span class="product-category">Women</span>
-        <h3>Lavender Co-ord</h3>
-
-        <div class="product-bottom">
-          <span class="price">₹1,099</span>
-          <button
-            class="add-btn"
-            onclick="addToCart('Lavender Co-ord',1099)"
-          >
-            Add
-          </button>
-        </div>
-      </div>
-    </article>
-
-
-    <article class="product reveal" data-name="classic kids set">
-      <button
-        class="wishlist-btn"
-        onclick="toggleWishlist(this,'Classic Kids Set',799)"
-      >♡</button>
-
-      <div class="product-image">
-        IMAGE
-      </div>
-
-      <div class="product-info">
-        <span class="product-category">Kids</span>
-        <h3>Classic Kids Set</h3>
-
-        <div class="product-bottom">
-          <span class="price">₹799</span>
-          <button
-            class="add-btn"
-            onclick="addToCart('Classic Kids Set',799)"
-          >
-            Add
-          </button>
-        </div>
-      </div>
-    </article>
-
-
-    <article class="product reveal" data-name="premium oversized shirt men">
-      <button
-        class="wishlist-btn"
-        onclick="toggleWishlist(this,'Premium Oversized Shirt',899)"
-      >♡</button>
-
-      <div class="product-image">
-        IMAGE
-      </div>
-
-      <div class="product-info">
-        <span class="product-category">Men</span>
-        <h3>Premium Oversized Shirt</h3>
-
-        <div class="product-bottom">
-          <span class="price">₹899</span>
-          <button
-            class="add-btn"
-            onclick="addToCart('Premium Oversized Shirt',899)"
-          >
-            Add
-          </button>
-        </div>
-      </div>
-    </article>
-
-
-    <article class="product reveal" data-name="minimal handbag accessory">
-      <button
-        class="wishlist-btn"
-        onclick="toggleWishlist(this,'Minimal Handbag',1299)"
-      >♡</button>
-
-      <div class="product-image">
-        IMAGE
-      </div>
-
-      <div class="product-info">
-        <span class="product-category">Accessories</span>
-        <h3>Minimal Handbag</h3>
-
-        <div class="product-bottom">
-          <span class="price">₹1,299</span>
-          <button
-            class="add-btn"
-            onclick="addToCart('Minimal Handbag',1299)"
-          >
-            Add
-          </button>
-        </div>
-      </div>
-    </article>
-
-  </div>
-
-</section>
-
-<!-- ================= OFFER ================= -->
-
-<section class="offer">
-
-  <div class="offer-box reveal">
-
-    <div>
-      <h2>Elevate Your Everyday.</h2>
-      <p>
-        Premium-looking fashion. Modern silhouettes.
-        Effortless AVIRA style.
-      </p>
-    </div>
-
-    <a href="#shop" class="btn btn-light">
-      Explore Now
-    </a>
-
-  </div>
-
-</section>
-
-<!-- ================= TRENDING ================= -->
-
-<section class="products" id="trending">
-
-  <div class="section-head reveal">
-
-    <div>
-      <h2>Trending Now</h2>
-      <p>
-        Styles everyone is talking about.
-      </p>
-    </div>
-
-  </div>
-
-  <div class="product-grid">
-
-    <article class="product reveal" data-name="lavender hoodie">
-      <button
-        class="wishlist-btn"
-        onclick="toggleWishlist(this,'Lavender Hoodie',999)"
-      >♡</button>
-
-      <div class="product-image">IMAGE</div>
-
-      <div class="product-info">
-        <span class="product-category">Women</span>
-        <h3>Lavender Hoodie</h3>
-
-        <div class="product-bottom">
-          <span class="price">₹999</span>
-          <button class="add-btn"
-            onclick="addToCart('Lavender Hoodie',999)">
-            Add
-          </button>
-        </div>
-      </div>
-    </article>
-
-
-    <article class="product reveal" data-name="urban kids jacket">
-      <button
-        class="wishlist-btn"
-        onclick="toggleWishlist(this,'Urban Kids Jacket',1199)"
-      >♡</button>
-
-      <div class="product-image">IMAGE</div>
-
-      <div class="product-info">
-        <span class="product-category">Kids</span>
-        <h3>Urban Kids Jacket</h3>
-
-        <div class="product-bottom">
-          <span class="price">₹1,199</span>
-          <button class="add-btn"
-            onclick="addToCart('Urban Kids Jacket',1199)">
-            Add
-          </button>
-        </div>
-      </div>
-    </article>
-
-
-    <article class="product reveal" data-name="essential black shirt">
-      <button
-        class="wishlist-btn"
-        onclick="toggleWishlist(this,'Essential Black Shirt',749)"
-      >♡</button>
-
-      <div class="product-image">IMAGE</div>
-
-      <div class="product-info">
-        <span class="product-category">Men</span>
-        <h3>Essential Black Shirt</h3>
-
-        <div class="product-bottom">
-          <span class="price">₹749</span>
-          <button class="add-btn"
-            onclick="addToCart('Essential Black Shirt',749)">
-            Add
-          </button>
-        </div>
-      </div>
-    </article>
-
-
-    <article class="product reveal" data-name="lavender mini bag">
-      <button
-        class="wishlist-btn"
-        onclick="toggleWishlist(this,'Lavender Mini Bag',699)"
-      >♡</button>
-
-      <div class="product-image">IMAGE</div>
-
-      <div class="product-info">
-        <span class="product-category">Accessories</span>
-        <h3>Lavender Mini Bag</h3>
-
-        <div class="product-bottom">
-          <span class="price">₹699</span>
-          <button class="add-btn"
-            onclick="addToCart('Lavender Mini Bag',699)">
-            Add
-          </button>
-        </div>
-      </div>
-    </article>
-
-  </div>
-
-</section>
-
-<!-- ================= FEATURED ================= -->
-
-<section>
-
-  <div class="section-head reveal">
-    <div>
-      <h2>Featured Collection</h2>
-      <p>
-        Curated pieces designed to bring effortless elegance
-        into your everyday wardrobe.
-      </p>
-    </div>
-  </div>
-
-  <div class="about-grid">
-
-    <div class="about-card reveal">
-      AVIRA
-    </div>
-
-    <div class="about-text reveal">
-      <h2>Simple. Modern. Elegant.</h2>
-
-      <p>
-        AVIRA brings together modern fashion and timeless
-        design in one carefully curated destination.
-      </p>
-
-      <p>
-        From everyday essentials to statement accessories,
-        discover pieces that make your personal style stand out.
-      </p>
-
-      <a href="#shop" class="btn btn-primary">
-        Shop Collection
-      </a>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= BEST SELLERS ================= -->
-
-<section class="products" id="bestsellers">
-
-  <div class="section-head reveal">
-    <div>
-      <h2>Best Sellers</h2>
-      <p>
-        Customer favourites from AVIRA.
-      </p>
-    </div>
-  </div>
-
-  <div class="product-grid">
-
-    <article class="product reveal" data-name="signature lavender dress">
-      <button class="wishlist-btn"
-        onclick="toggleWishlist(this,'Signature Lavender Dress',1499)">
-        ♡
-      </button>
-
-      <div class="product-image">IMAGE</div>
-
-      <div class="product-info">
-        <span class="product-category">Women</span>
-        <h3>Signature Lavender Dress</h3>
-
-        <div class="product-bottom">
-          <span class="price">₹1,499</span>
-          <button class="add-btn"
-            onclick="addToCart('Signature Lavender Dress',1499)">
-            Add
-          </button>
-        </div>
-      </div>
-    </article>
-
-
-    <article class="product reveal" data-name="premium kids wear">
-      <button class="wishlist-btn"
-        onclick="toggleWishlist(this,'Premium Kids Wear',899)">
-        ♡
-      </button>
-
-      <div class="product-image">IMAGE</div>
-
-      <div class="product-info">
-        <span class="product-category">Kids</span>
-        <h3>Premium Kids Wear</h3>
-
-        <div class="product-bottom">
-          <span class="price">₹899</span>
-          <button class="add-btn"
-            onclick="addToCart('Premium Kids Wear',899)">
-            Add
-          </button>
-        </div>
-      </div>
-    </article>
-
-
-    <article class="product reveal" data-name="classic relaxed shirt">
-      <button class="wishlist-btn"
-        onclick="toggleWishlist(this,'Classic Relaxed Shirt',849)">
-        ♡
-      </button>
-
-      <div class="product-image">IMAGE</div>
-
-      <div class="product-info">
-        <span class="product-category">Men</span>
-        <h3>Classic Relaxed Shirt</h3>
-
-        <div class="product-bottom">
-          <span class="price">₹849</span>
-          <button class="add-btn"
-            onclick="addToCart('Classic Relaxed Shirt',849)">
-            Add
-          </button>
-        </div>
-      </div>
-    </article>
-
-
-    <article class="product reveal" data-name="signature wallet">
-      <button class="wishlist-btn"
-        onclick="toggleWishlist(this,'Signature Wallet',599)">
-        ♡
-      </button>
-
-      <div class="product-image">IMAGE</div>
-
-      <div class="product-info">
-        <span class="product-category">Accessories</span>
-        <h3>Signature Wallet</h3>
-
-        <div class="product-bottom">
-          <span class="price">₹599</span>
-          <button class="add-btn"
-            onclick="addToCart('Signature Wallet',599)">
-            Add
-          </button>
-        </div>
-      </div>
-    </article>
-
-  </div>
-
-</section>
-
-<!-- ================= WHY AVIRA ================= -->
-
-<section class="why">
-
-  <div class="section-head reveal">
-    <div>
-      <h2>Why AVIRA?</h2>
-      <p>
-        Fashion designed around your lifestyle.
-      </p>
-    </div>
-  </div>
-
-  <div class="why-grid">
-
-    <div class="why-card reveal">
-      <div class="why-icon">✦</div>
-      <h3>Curated Style</h3>
-      <p>
-        Carefully selected styles with a modern aesthetic.
-      </p>
-    </div>
-
-    <div class="why-card reveal">
-      <div class="why-icon">♡</div>
-      <h3>Made for You</h3>
-      <p>
-        Collections for different ages, moods and occasions.
-      </p>
-    </div>
-
-    <div class="why-card reveal">
-      <div class="why-icon">◇</div>
-      <h3>Premium Feel</h3>
-      <p>
-        A clean shopping experience inspired by premium brands.
-      </p>
-    </div>
-
-    <div class="why-card reveal">
-      <div class="why-icon">↗</div>
-      <h3>Easy Shopping</h3>
-      <p>
-        Search, wishlist and cart features designed for simplicity.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= WISHLIST ================= -->
-
-<section class="app-section" id="wishlist">
-
-  <div class="section-head reveal">
-    <div>
-      <h2>Your Wishlist</h2>
-      <p>
-        Save the pieces you love.
-      </p>
-    </div>
-  </div>
-
-  <div id="wishlistContainer" class="empty-box reveal">
-
-    <div>
-      <strong>Your wishlist is empty</strong>
-      <p>
-        Tap ♡ on any product to save it here.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= ORDERS ================= -->
-
-<section id="orders">
-
-  <div class="section-head reveal">
-    <div>
-      <h2>Your Orders</h2>
-      <p>
-        Track your AVIRA purchases here.
-      </p>
-    </div>
-  </div>
-
-  <div class="empty-box reveal">
-
-    <div>
-      <strong>No orders yet</strong>
-      <p>
-        Your completed orders will appear here.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= REVIEWS ================= -->
-
-<section class="reviews">
-
-  <div class="section-head reveal">
-    <div>
-      <h2>What People Say</h2>
-      <p>
-        A few words from the AVIRA community.
-      </p>
-    </div>
-  </div>
-
-  <div class="review-grid">
-
-    <div class="review reveal">
-      <div class="stars">★★★★★</div>
-      <p>
-        Beautiful design and very easy to browse.
-      </p>
-      <strong>— Ananya</strong>
-    </div>
-
-    <div class="review reveal">
-      <div class="stars">★★★★★</div>
-      <p>
-        The lavender theme makes the store feel premium.
-      </p>
-      <strong>— Meera</strong>
-    </div>
-
-    <div class="review reveal">
-      <div class="stars">★★★★★</div>
-      <p>
-        Simple shopping experience with a clean look.
-      </p>
-      <strong>— Arjun</strong>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= ACCOUNT ================= -->
-
-<section class="app-section" id="account">
-
-  <div class="section-head reveal">
-    <div>
-      <h2>Your Account</h2>
-      <p>
-        Manage your AVIRA account.
-      </p>
-    </div>
-  </div>
-
-  <div class="account-box reveal">
-
-    <div class="account-info">
-      <h3 id="accountName">Welcome to AVIRA</h3>
-      <p id="accountStatus">
-        Login to access your account.
-      </p>
-    </div>
-
-    <button class="btn btn-primary" onclick="openLogin()">
+    <button
+      class="btn btn-primary"
+      style="margin-top:20px;"
+      onclick="login()"
+      id="loginBtn">
       Login
     </button>
 
   </div>
 
-</section>
+</main>
 
-<!-- ================= NEWSLETTER ================= -->
 
-<section class="newsletter">
+<!-- CART -->
 
-  <div class="newsletter-box reveal">
+<main id="cart" class="page">
 
-    <h2>Stay in the AVIRA Circle.</h2>
+  <div class="page-title">
+    <h1>Your Cart</h1>
+    <p>Ready to checkout?</p>
+  </div>
 
-    <p>
-      Get updates about new collections, offers and styles.
-    </p>
+  <div class="cart-list" id="cartList"></div>
 
-    <form
-      class="newsletter-form"
-      onsubmit="subscribeNewsletter(event)"
-    >
-      <input
-        type="email"
-        id="newsletterEmail"
-        placeholder="Your email address"
-        required
-      >
+  <div class="cart-total">
 
-      <button type="submit">
-        Join
-      </button>
-    </form>
+    <span>Total</span>
+
+    <span id="cartTotal">₹0</span>
 
   </div>
 
-</section>
+</main>
 
-<!-- ================= ABOUT ================= -->
 
-<section class="about" id="about">
-
-  <div class="about-grid">
-
-    <div class="about-text reveal">
-
-      <div class="eyebrow">
-        ABOUT AVIRA
-      </div>
-
-      <h2>Wear Your Elegance.</h2>
-
-      <p>
-        AVIRA is a modern fashion destination built around
-        clean design, effortless style and everyday confidence.
-      </p>
-
-      <p>
-        We believe fashion should feel personal, comfortable
-        and expressive.
-      </p>
-
-    </div>
-
-    <div class="about-card reveal">
-      AVIRA
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= CONTACT ================= -->
-
-<section class="contact" id="contact">
-
-  <div class="section-head reveal">
-
-    <div>
-      <h2>Contact AVIRA</h2>
-      <p>
-        Have a question? We're here to help.
-      </p>
-    </div>
-
-  </div>
-
-  <div class="contact-grid">
-
-    <div class="contact-card reveal">
-      <small>EMAIL</small>
-      <p>support@avira.store</p>
-    </div>
-
-    <div class="contact-card reveal">
-      <small>INSTAGRAM</small>
-      <p>@avira</p>
-    </div>
-
-    <div class="contact-card reveal">
-      <small>SUPPORT</small>
-      <p>Coming Soon</p>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 
 <footer>
 
-  <div class="footer-top">
+  <div class="footer-inner">
 
     <div>
-      <div class="footer-logo">
-        AVI<span>RA</span>
-      </div>
-
-      <p class="footer-text">
-        Wear Your Elegance.
-        Modern fashion for every moment.
-      </p>
+      <div class="logo">AVI<span>RA</span></div>
+      <p>Wear Your Elegance.</p>
+      <p>Modern fashion for everyone.</p>
     </div>
 
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#shop">Shop</a>
-      <a href="#wishlist">Wishlist</a>
-      <a href="#orders">Orders</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+    <div>
+      <h3>Explore</h3>
+      <p onclick="go('home')">Home</p>
+      <p onclick="go('wishlist')">Wishlist</p>
+      <p onclick="go('orders')">Orders</p>
+      <p onclick="go('account')">Account</p>
     </div>
 
-  </div>
+    <div>
+      <h3>Shop</h3>
+      <p>Kids</p>
+      <p>Women</p>
+      <p>Men</p>
+      <p>Accessories</p>
+    </div>
 
-  <div class="footer-bottom">
-    © 2026 AVIRA Fashion. All rights reserved.
   </div>
 
 </footer>
 
-<!-- ================= CART DRAWER ================= -->
 
-<div class="cart-drawer" id="cartDrawer">
+<!-- MOBILE NAV -->
 
-  <div class="cart-head">
-    <h2>Your Cart</h2>
+<nav class="mobile-nav">
 
-    <button class="icon-btn" onclick="closeCart()">
-      ×
-    </button>
-  </div>
-
-  <div class="cart-items" id="cartItems"></div>
-
-  <div class="cart-total">
-
-    <div class="cart-total-row">
-      <span>Total</span>
-      <span id="cartTotal">₹0</span>
-    </div>
-
-    <button class="checkout" onclick="checkout()">
-      Continue to Checkout
-    </button>
-
-  </div>
-
-</div>
-
-<!-- ================= LOGIN MODAL ================= -->
-
-<div class="modal" id="loginModal">
-
-  <div class="modal-box">
-
-    <button class="close-modal" onclick="closeLogin()">
-      ×
-    </button>
-
-    <h2>Welcome to AVIRA</h2>
-
-    <p>
-      Login to manage your account.
-    </p>
-
-    <input
-      class="login-input"
-      id="phoneInput"
-      type="tel"
-      placeholder="Mobile number"
-      maxlength="10"
-    >
-
-    <input
-      class="login-input"
-      id="otpInput"
-      type="text"
-      placeholder="OTP"
-      maxlength="6"
-    >
-
-    <button class="login-btn" onclick="loginUser()">
-      Login
-    </button>
-
-    <button class="google-btn" onclick="googleLogin()">
-      Continue with Google
-    </button>
-
-    <div class="login-note">
-      Demo OTP: 123456
-    </div>
-
-  </div>
-
-</div>
-
-<!-- ================= MOBILE BOTTOM NAV ================= -->
-
-<nav class="bottom-nav">
-
-  <a href="#home" class="bottom-item active">
+  <button data-page="home" onclick="go('home')">
     <span>⌂</span>
-    <small>Home</small>
-  </a>
+    Home
+  </button>
 
-  <a href="#wishlist" class="bottom-item">
+  <button data-page="wishlist" onclick="go('wishlist')">
     <span>♡</span>
-    <small>Wishlist</small>
-  </a>
+    Wishlist
+  </button>
 
-  <a href="#orders" class="bottom-item">
+  <button data-page="orders" onclick="go('orders')">
     <span>▣</span>
-    <small>Orders</small>
-  </a>
+    Orders
+  </button>
 
-  <a href="#account" class="bottom-item">
-    <span>♙</span>
-    <small>Account</small>
-  </a>
+  <button data-page="account" onclick="go('account')">
+    <span>◉</span>
+    Account
+  </button>
 
 </nav>
 
+
 <script>
 
-/* ================= SEARCH ================= */
+/* =========================
+   AVIRA APP
+========================= */
+
+let cart = JSON.parse(localStorage.getItem("aviraCart") || "[]");
+
+let wishlist =
+  JSON.parse(localStorage.getItem("aviraWishlist") || "[]");
+
+let orders =
+  JSON.parse(localStorage.getItem("aviraOrders") || "[]");
+
+
+/* ROUTING */
+
+function go(page){
+
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.remove("active");
+  });
+
+  const target = document.getElementById(page);
+
+  if(target){
+    target.classList.add("active");
+  }
+
+  document.querySelectorAll(".mobile-nav button").forEach(btn=>{
+    btn.classList.toggle(
+      "active",
+      btn.dataset.page === page
+    );
+  });
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  if(page === "wishlist") renderWishlist();
+
+  if(page === "cart") renderCart();
+
+  if(page === "orders") renderOrders();
+
+  if(page === "account") renderAccount();
+
+  history.replaceState(null,"","#"+page);
+}
+
+
+/* LOAD ROUTE */
+
+function loadRoute(){
+
+  const page =
+    location.hash.replace("#","") || "home";
+
+  const valid =
+    ["home","wishlist","orders","account","cart"];
+
+  go(valid.includes(page) ? page : "home");
+}
+
+window.addEventListener("hashchange",loadRoute);
+
+window.addEventListener("load",loadRoute);
+
+
+/* SEARCH */
 
 function toggleSearch(){
 
-  const search = document.getElementById("searchArea");
+  document
+    .getElementById("searchBox")
+    .classList.toggle("show");
 
-  search.classList.toggle("active");
-
-  if(search.classList.contains("active")){
-    setTimeout(()=>{
-      document.getElementById("searchInput").focus();
-    },300);
-  }
-
+  document
+    .getElementById("searchInput")
+    .focus();
 }
 
 function searchProducts(){
 
-  const query =
-    document.getElementById("searchInput")
-    .value
-    .toLowerCase()
-    .trim();
+  const value =
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase();
 
-  const products =
-    document.querySelectorAll(".product");
+  document
+    .querySelectorAll(".product")
+    .forEach(product=>{
 
-  products.forEach(product=>{
+      const name =
+        product.dataset.name || "";
 
-    const name =
-      product.dataset.name.toLowerCase();
+      product.style.display =
+        name.includes(value) ? "" : "none";
 
-    product.style.display =
-      name.includes(query) ? "" : "none";
-
-  });
-
+    });
 }
 
 
-/* ================= MENU ================= */
+/* MENU */
 
-function toggleMenu(){
+function openMenu(){
 
   document
-    .getElementById("menuPanel")
-    .classList.toggle("active");
+    .getElementById("menu")
+    .classList.add("show");
 
+  document
+    .getElementById("overlay")
+    .classList.add("show");
 }
 
 function closeMenu(){
 
   document
-    .getElementById("menuPanel")
-    .classList.remove("active");
-
-}
-
-
-/* ================= LOGIN ================= */
-
-function openLogin(){
+    .getElementById("menu")
+    .classList.remove("show");
 
   document
-    .getElementById("loginModal")
-    .classList.add("active");
-
-}
-
-function closeLogin(){
-
-  document
-    .getElementById("loginModal")
-    .classList.remove("active");
-
-}
-
-function loginUser(){
-
-  const phone =
-    document.getElementById("phoneInput").value.trim();
-
-  const otp =
-    document.getElementById("otpInput").value.trim();
-
-  if(phone.length < 10){
-
-    alert("Please enter a valid mobile number.");
-
-    return;
-  }
-
-  if(otp !== "123456"){
-
-    alert("Demo OTP is 123456.");
-
-    return;
-  }
-
-  localStorage.setItem("aviraLoggedIn","true");
-
-  document.getElementById("accountName")
-    .textContent = "Welcome back!";
-
-  document.getElementById("accountStatus")
-    .textContent = "You are logged in to AVIRA.";
-
-  closeLogin();
-
-  alert("Login successful!");
-
-}
-
-function googleLogin(){
-
-  alert(
-    "Google login needs a real Google/Firebase authentication setup."
-  );
-
+    .getElementById("overlay")
+    .classList.remove("show");
 }
 
 
-/* ================= CART ================= */
-
-let cart =
-  JSON.parse(
-    localStorage.getItem("aviraCart") || "[]"
-  );
+/* CART */
 
 function saveCart(){
 
@@ -2480,137 +1447,105 @@ function saveCart(){
     JSON.stringify(cart)
   );
 
+  updateCartCount();
 }
 
-function addToCart(name,price){
+function addCart(name,price){
 
-  cart.push({
-    name:name,
-    price:price
-  });
+  const existing =
+    cart.find(item=>item.name === name);
+
+  if(existing){
+    existing.qty++;
+  }else{
+    cart.push({
+      name,
+      price,
+      qty:1
+    });
+  }
 
   saveCart();
 
-  updateCart();
-
-  openCart();
-
+  alert(name + " added to cart.");
 }
 
-function removeFromCart(index){
+function removeCart(index){
 
   cart.splice(index,1);
 
   saveCart();
 
-  updateCart();
-
+  renderCart();
 }
 
-function updateCart(){
-
-  const container =
-    document.getElementById("cartItems");
+function updateCartCount(){
 
   const count =
-    document.getElementById("cartCount");
+    cart.reduce((sum,item)=>sum + item.qty,0);
+
+  document.getElementById("cartCount").textContent =
+    count;
+}
+
+function renderCart(){
+
+  const list =
+    document.getElementById("cartList");
 
   const totalElement =
     document.getElementById("cartTotal");
 
-  count.textContent = cart.length;
+  if(!cart.length){
 
-  if(cart.length === 0){
+    list.innerHTML =
+      `<div class="empty">
+        Your cart is empty.
+       </div>`;
 
-    container.innerHTML = `
-      <div class="empty-box">
-        <div>
-          <strong>Your cart is empty</strong>
-          <p>Add something you love.</p>
-        </div>
-      </div>
-    `;
-
-    totalElement.textContent = "₹0";
+    totalElement.textContent="₹0";
 
     return;
   }
 
-  let total = 0;
+  let total=0;
 
-  container.innerHTML = "";
+  list.innerHTML =
+    cart.map((item,index)=>{
 
-  cart.forEach((item,index)=>{
+      total += item.price * item.qty;
 
-    total += item.price;
+      return `
+        <div class="cart-item">
 
-    const div =
-      document.createElement("div");
+          <div class="cart-thumb">
+            IMAGE
+          </div>
 
-    div.className = "cart-item";
+          <div style="flex:1">
+            <strong>${item.name}</strong>
+            <p style="color:#777;margin-top:5px;">
+              ₹${item.price} × ${item.qty}
+            </p>
+          </div>
 
-    div.innerHTML = `
-      <div>
-        <strong>${item.name}</strong>
-        <br>
-        <small>₹${item.price.toLocaleString("en-IN")}</small>
-      </div>
+          <button
+            class="icon-btn"
+            onclick="removeCart(${index})">
+            ×
+          </button>
 
-      <button
-        class="remove-cart"
-        onclick="removeFromCart(${index})"
-      >
-        Remove
-      </button>
-    `;
+        </div>
+      `;
 
-    container.appendChild(div);
-
-  });
+    }).join("");
 
   totalElement.textContent =
     "₹" + total.toLocaleString("en-IN");
-
-}
-
-function openCart(){
-
-  document
-    .getElementById("cartDrawer")
-    .classList.add("active");
-
-}
-
-function closeCart(){
-
-  document
-    .getElementById("cartDrawer")
-    .classList.remove("active");
-
-}
-
-function checkout(){
-
-  if(cart.length === 0){
-
-    alert("Your cart is empty.");
-
-    return;
-  }
-
-  alert(
-    "Checkout is ready for payment integration."
-  );
-
 }
 
 
-/* ================= WISHLIST ================= */
-
-let wishlist =
-  JSON.parse(
-    localStorage.getItem("aviraWishlist") || "[]"
-  );
+/* WISHLIST */
 
 function saveWishlist(){
 
@@ -2618,114 +1553,29 @@ function saveWishlist(){
     "aviraWishlist",
     JSON.stringify(wishlist)
   );
-
 }
 
-function toggleWishlist(button,name,price){
+function addWishlist(name,price){
 
-  const existing =
-    wishlist.find(item=>item.name === name);
+  const exists =
+    wishlist.some(item=>item.name === name);
 
-  if(existing){
+  if(!exists){
 
-    wishlist =
-      wishlist.filter(
-        item=>item.name !== name
-      );
+    wishlist.push({
+      name,
+      price
+    });
 
-    button.classList.remove("active");
-    button.textContent = "♡";
+    saveWishlist();
+
+    alert(name + " saved to wishlist.");
 
   }else{
 
-    wishlist.push({
-      name:name,
-      price:price
-    });
-
-    button.classList.add("active");
-    button.textContent = "♥";
+    alert("Already in wishlist.");
 
   }
-
-  saveWishlist();
-
-  renderWishlist();
-
-}
-
-function renderWishlist(){
-
-  const container =
-    document.getElementById("wishlistContainer");
-
-  if(wishlist.length === 0){
-
-    container.className = "empty-box reveal show";
-
-    container.innerHTML = `
-      <div>
-        <strong>Your wishlist is empty</strong>
-        <p>Tap ♡ on any product to save it here.</p>
-      </div>
-    `;
-
-    return;
-  }
-
-  container.className = "wishlist-grid";
-
-  container.innerHTML = "";
-
-  wishlist.forEach((item,index)=>{
-
-    const card =
-      document.createElement("div");
-
-    card.className = "product";
-
-    card.innerHTML = `
-      <button
-        class="wishlist-btn active"
-        onclick="removeWishlist(${index})"
-      >
-        ♥
-      </button>
-
-      <div class="product-image">
-        IMAGE
-      </div>
-
-      <div class="product-info">
-
-        <span class="product-category">
-          SAVED
-        </span>
-
-        <h3>${item.name}</h3>
-
-        <div class="product-bottom">
-
-          <span class="price">
-            ₹${item.price.toLocaleString("en-IN")}
-          </span>
-
-          <button
-            class="add-btn"
-            onclick="addToCart('${item.name.replace(/'/g,"\\'")}',${item.price})"
-          >
-            Add
-          </button>
-
-        </div>
-
-      </div>
-    `;
-
-    container.appendChild(card);
-
-  });
-
 }
 
 function removeWishlist(index){
@@ -2735,185 +1585,197 @@ function removeWishlist(index){
   saveWishlist();
 
   renderWishlist();
-
-  syncWishlistButtons();
-
 }
 
-function syncWishlistButtons(){
+function renderWishlist(){
 
-  document
-    .querySelectorAll(".wishlist-btn")
-    .forEach(button=>{
+  const box =
+    document.getElementById("wishlistProducts");
 
-      const onclick =
-        button.getAttribute("onclick") || "";
+  if(!wishlist.length){
 
-      const match =
-        onclick.match(/'([^']+)'/);
+    box.innerHTML =
+      `<div class="empty">
+        <h2>Your wishlist is empty.</h2>
+        <p>Save your favourite AVIRA pieces here.</p>
+       </div>`;
 
-      if(!match) return;
-
-      const name = match[1];
-
-      const exists =
-        wishlist.some(
-          item=>item.name === name
-        );
-
-      if(exists){
-
-        button.classList.add("active");
-        button.textContent = "♥";
-
-      }
-
-    });
-
-}
-
-
-/* ================= NEWSLETTER ================= */
-
-function subscribeNewsletter(event){
-
-  event.preventDefault();
-
-  const email =
-    document
-      .getElementById("newsletterEmail")
-      .value
-      .trim();
-
-  if(!email) return;
-
-  alert(
-    "Thanks for joining the AVIRA circle!"
-  );
-
-  event.target.reset();
-
-}
-
-
-/* ================= SCROLL REVEAL ================= */
-
-const revealObserver =
-  new IntersectionObserver(
-    entries=>{
-
-      entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-          entry.target.classList.add("show");
-
-          revealObserver.unobserve(
-            entry.target
-          );
-
-        }
-
-      });
-
-    },
-    {
-      threshold:.12
-    }
-  );
-
-document
-  .querySelectorAll(".reveal")
-  .forEach(el=>{
-    revealObserver.observe(el);
-  });
-
-
-/* ================= BOTTOM NAV ================= */
-
-const bottomItems =
-  document.querySelectorAll(".bottom-item");
-
-const bottomSectionIds = [
-  "home",
-  "wishlist",
-  "orders",
-  "account"
-];
-
-const bottomObserver =
-  new IntersectionObserver(
-    entries=>{
-
-      entries.forEach(entry=>{
-
-        if(!entry.isIntersecting) return;
-
-        bottomItems.forEach(item=>{
-          item.classList.remove("active");
-        });
-
-        const active =
-          document.querySelector(
-            `.bottom-item[href="#${entry.target.id}"]`
-          );
-
-        if(active){
-          active.classList.add("active");
-        }
-
-      });
-
-    },
-    {
-      rootMargin:"-35% 0px -55% 0px",
-      threshold:0
-    }
-  );
-
-bottomSectionIds.forEach(id=>{
-
-  const section =
-    document.getElementById(id);
-
-  if(section){
-    bottomObserver.observe(section);
+    return;
   }
 
-});
+  box.innerHTML =
+    wishlist.map((item,index)=>{
 
+      return `
+        <article class="product">
 
-/* ================= CLOSE MODAL ON BACKGROUND ================= */
+          <div class="product-image">
+            IMAGE
+          </div>
 
-document
-  .getElementById("loginModal")
-  .addEventListener("click",function(e){
+          <div class="product-info">
 
-    if(e.target === this){
-      closeLogin();
-    }
+            <h3>${item.name}</h3>
 
-  });
+            <div class="price">
+              ₹${item.price}
+            </div>
 
+            <div class="product-actions">
 
-/* ================= INITIAL DATA ================= */
+              <button
+                onclick="removeWishlist(${index})">
+                Remove
+              </button>
 
-updateCart();
+              <button
+                class="add"
+                onclick="addCart('${item.name}',${item.price})">
+                Add
+              </button>
 
-renderWishlist();
+            </div>
 
-if(localStorage.getItem("aviraLoggedIn") === "true"){
+          </div>
 
-  document.getElementById("accountName")
-    .textContent = "Welcome back!";
+        </article>
+      `;
 
-  document.getElementById("accountStatus")
-    .textContent =
-      "You are logged in to AVIRA.";
-
+    }).join("");
 }
+
+
+/* ORDERS */
+
+function renderOrders(){
+
+  const box =
+    document.getElementById("ordersList");
+
+  if(!orders.length){
+
+    box.innerHTML =
+      `<div class="empty">
+        <h2>No orders yet.</h2>
+        <p>Your completed purchases will appear here.</p>
+       </div>`;
+
+    return;
+  }
+
+  box.innerHTML =
+    orders.map(order=>`
+
+      <div class="account-card">
+
+        <h3>Order #${order.id}</h3>
+
+        <p style="color:#777;margin:10px 0;">
+          ${order.date}
+        </p>
+
+        <strong>
+          ₹${order.total.toLocaleString("en-IN")}
+        </strong>
+
+      </div>
+
+    `).join("");
+}
+
+
+/* ACCOUNT */
+
+function login(){
+
+  const name =
+    prompt("Enter your name");
+
+  if(!name) return;
+
+  localStorage.setItem(
+    "aviraUser",
+    name
+  );
+
+  renderAccount();
+}
+
+function logout(){
+
+  localStorage.removeItem("aviraUser");
+
+  renderAccount();
+}
+
+function renderAccount(){
+
+  const user =
+    localStorage.getItem("aviraUser");
+
+  const name =
+    document.getElementById("accountName");
+
+  const status =
+    document.getElementById("accountStatus");
+
+  const button =
+    document.getElementById("loginBtn");
+
+  if(user){
+
+    name.textContent =
+      "Hi, " + user + " 👋";
+
+    status.textContent =
+      "Welcome back to AVIRA.";
+
+    button.textContent =
+      "Logout";
+
+    button.onclick =
+      logout;
+
+  }else{
+
+    name.textContent =
+      "Welcome to AVIRA";
+
+    status.textContent =
+      "Login to manage your account.";
+
+    button.textContent =
+      "Login";
+
+    button.onclick =
+      login;
+
+  }
+}
+
+
+/* NEWSLETTER */
+
+function subscribe(){
+
+  const email =
+    prompt("Enter your email");
+
+  if(email){
+
+    alert(
+      "You're subscribed to AVIRA ✨"
+    );
+
+  }
+}
+
+
+/* START */
+
+updateCartCount();
 
 </script>
 
 </body>
-  </html>
+</html>
